@@ -1,0 +1,4 @@
+﻿  XO.cpp
+c:\users\мария\source\repos\x vs o\xo\xo.cpp(68): warning C4244: аргумент: преобразование "time_t" в "unsigned int", возможна потеря данных
+c:\users\мария\source\repos\x vs o\xo\interface.h(72): warning C4715: Menu: значение возвращается не при всех путях выполнения
+  XO.vcxproj -> C:\Users\Мария\source\repos\X vs O\Debug\XO.exe
