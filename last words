@@ -1,0 +1,29 @@
+// Лаб 8.cpp: определяет точку входа для консольного приложения.
+//
+
+#include "stdafx.h"
+#include "fstream"
+#include <iostream>
+using namespace std;
+
+int main()
+{
+	setlocale(LC_ALL, "rus");
+	char str[31];
+	int n;
+	ifstream in("file.txt");
+	if (!in) // если файл не был открыт
+	{
+		cout << "Файл не может быть открыт или создан\n"; // напечатать соответствующее сообщение
+		return 1; // выполнить выход из программы
+	}
+	while (in) {
+		in >> str;
+		n = strlen(str);
+		if ((str[n-1]) == '?' || (str[n-1]) == '.' || (str[n-1]) == '!') cout << str << endl;
+		str[0] = '\0';
+	}
+	in.close();
+	system("pause");
+    return 0;
+}
