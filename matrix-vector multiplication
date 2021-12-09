@@ -1,0 +1,54 @@
+// Лаб 7.cpp: определяет точку входа для консольного приложения.
+//
+
+#include "stdafx.h"
+#include <iostream>
+#include <ctime>
+using namespace std;
+
+int main()
+{
+	int **a, *b, n, m;
+	setlocale(LC_ALL, "RUS");
+	cout << "(Ctrl+Z Enter для выхода из программы.) \n" << "Введите размерность матрицы, количество строк и столбцов: ";
+	do
+	{
+		cin >> n >> m;
+		if (n <= 0 || m <= 0) cout << "Пожалуйста, введите другое значение больше нуля: ";
+	} while (n <= 0 || m <= 0);
+	while (!feof(stdin)) {
+		srand(time(NULL));
+		a = new int *[n];
+		b = new int[n];
+		int i=0;
+		for (int i = 0; i < n; ++i) a[i] = new int[m];//создание динамической матрицы
+		for (int i = 0; i < n; i++) {//заполнение и вывод матрицы
+			for (int j = 0; j < m; j++) {
+				a[i][j] = rand() % 11 - rand() % 11;
+				cout << a[i][j] << "\t";
+			}
+			cout << "\n\n";
+		}
+		cout << "Введите вектор:" << endl;
+		for (int j = 0; j < m; j++) {
+			cin >> b[j];//считывание вектора с клавиатуры
+			for (int i = 0; i < n; i++)
+				a[i][j] *= b[j];//перемножение
+		}
+		cout << endl << "Результат: " << endl;
+		for (int i = 0; i < n; i++) {//сложение
+			b[i] = 0;
+			for (int j = 0; j < m; j++)
+				b[i] += a[i][j];
+			cout << b[i] << "\n\n";//вывод
+		}
+
+		cout << "(Ctrl+Z Enter для выхода из программы.) \n" << "Введите размерность матрицы, количество строк и столбцов: ";
+		do
+		{
+			cin >> n >> m;
+			if (n <= 0 || m <= 0) cout << "Пожалуйста, введите другое значение больше нуля: ";
+		} while (n <= 0 || m <= 0);
+	}
+	return 0;
+}
